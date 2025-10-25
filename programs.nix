@@ -16,7 +16,13 @@ in
     neovim
     fzf
     gnumake
+    fastfetch
+    pipes-rs
+    pfetch-rs
+    ramfetch
     gcc
+    cmatrix
+    unimatrix
     fd
     ripgrep
   ];
@@ -27,6 +33,8 @@ in
 
   home.shellAliases = {
     ls = "eza -lah";
+    gc = "git add . && git commit -m";
+    upsys = "sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y; flatpak update && flatpak uninstall --unused -y; nh home switch --impure";
     ".." = "cd ..";
     "..." = "cd ../..";
   };
