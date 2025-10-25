@@ -14,7 +14,7 @@
   };
 
   outputs =
-    { nixpkgs, ghostty, home-manager, self, ... }:
+    { nixpkgs, home-manager, self, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};

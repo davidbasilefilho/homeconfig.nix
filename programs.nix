@@ -7,6 +7,8 @@ in {
     nerd-fonts.jetbrains-mono
     nerd-fonts.zed-mono
     nerd-fonts.geist-mono
+    nixfmt
+    cider
     adwaita-fonts
     ghostty
     neovim
