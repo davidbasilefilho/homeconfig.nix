@@ -3,5 +3,6 @@
 {
   home.sessionVariables = {
     EDITOR = "zeditor";
+    TERMINAL = "ghostty";
   };
 }
