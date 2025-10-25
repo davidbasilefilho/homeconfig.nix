@@ -11,7 +11,6 @@ in
     nerd-fonts.zed-mono
     nerd-fonts.geist-mono
     nixfmt
-    cider
     adwaita-fonts
     neovim
     fzf
@@ -34,6 +33,7 @@ in
   home.shellAliases = {
     ls = "eza -lah";
     gc = "git add . && git commit -m";
+    n = "nvim";
     upsys = "sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y; flatpak update && flatpak uninstall --unused -y; nh home switch --impure";
     ".." = "cd ..";
     "..." = "cd ../..";
