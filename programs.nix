@@ -1,6 +1,9 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 
-{
+let
+  gitconfigPath = builtins.getEnv "HOME" + "/.config/home-manager/gitconfig.toml";
+  gitconfig = builtins.fromTOML (builtins.readFile gitconfigPath);
+in {
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     nerd-fonts.zed-mono
@@ -19,24 +22,27 @@
   };
 
   home.shellAliases = {
-      ls = "eza -lah";
+    ls = "eza -lah";
+    ".." = "cd ..";
+    "..." = "cd ../..";
   };
 
   fonts.fontconfig.enable = true;
   fonts.fontconfig.antialiasing = true;
+
   programs = {
     bash = {
       enable = true;
       enableCompletion = true;
       profileExtra = ''
-      export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
-      export PATH="$PATH:$HOME/.bun/bin"
+        export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
+        export PATH="$PATH:$HOME/.bun/bin"
       '';
       initExtra = ''
-      shopt -s autocd
+        shopt -s autocd
       '';
     };
-   
+
     eza = {
       enable = true;
       enableBashIntegration = true;
@@ -99,14 +105,17 @@
         };
       };
     };
+
     ghostty = {
       enable = true;
       enableBashIntegration = true;
     };
 
-    git.enable = true;
-    git.userName = (lib.fromTOML (builtins.readFile "./.gitconfig.toml")).user.name;
-    git.userEmail = (lib.fromTOML (builtins.readFile "./.gitconfig.toml")).user.email;
+    git = {
+      enable = true;
+      userName = gitconfig.user.name;
+      userEmail = gitconfig.user.email;
+    };
 
     gh = {
       enable = true;
@@ -119,6 +128,8 @@
       clean.enable = true;
     };
 
+    btop.enable = true;
+    bat.enable = true;
     lazygit.enable = true;
   };
 }
