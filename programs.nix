@@ -35,6 +35,9 @@ in
     gc = "git add . && git commit -m";
     n = "nvim";
     upsys = "sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y; flatpak update && flatpak uninstall --unused -y; nh home switch --impure";
+    nixup = "nh home switch --impure";
+    aptup = "sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y";
+    flatpakup = "flatpak update && flatpak uninstall --unused -y";
     ".." = "cd ..";
     "..." = "cd ../..";
   };
