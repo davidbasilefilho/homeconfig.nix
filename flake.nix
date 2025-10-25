@@ -7,10 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, self, ... }:
+    { nixpkgs, ghostty, home-manager, self, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -18,7 +21,14 @@
     {
       homeConfigurations."basile" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix ];
+        modules = [ 
+          ./home.nix
+          ({ pkgs, ... }: {
+            home.packages = [
+              ghostty.packages.${system}.default
+            ];
+          })
+        ];
         extraSpecialArgs = { inherit self; };
       };
     };
