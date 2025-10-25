@@ -1,8 +1,11 @@
 { config, pkgs, ... }:
 
 let
-  gitconfig = builtins.fromTOML (builtins.readFile "${config.xdg.configHome}/home-manager/gitconfig.toml");
-in {
+  gitconfig = builtins.fromTOML (
+    builtins.readFile "${config.xdg.configHome}/home-manager/gitconfig.toml"
+  );
+in
+{
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     nerd-fonts.zed-mono
@@ -10,7 +13,6 @@ in {
     nixfmt
     cider
     adwaita-fonts
-    ghostty
     neovim
     fzf
     gnumake

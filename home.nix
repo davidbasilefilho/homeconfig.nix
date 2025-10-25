@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./programs.nix ./env.nix ];
+  imports = [
+    ./programs.nix
+    ./env.nix
+  ];
   home.username = "basile";
   home.homeDirectory = "/home/basile";
 
