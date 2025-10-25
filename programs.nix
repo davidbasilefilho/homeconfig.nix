@@ -1,8 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  gitconfigPath = builtins.getEnv "HOME" + "/.config/home-manager/gitconfig.toml";
-  gitconfig = builtins.fromTOML (builtins.readFile gitconfigPath);
+  gitconfig = builtins.fromTOML (builtins.readFile "${config.xdg.configHome}/home-manager/gitconfig.toml");
 in {
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -113,8 +112,10 @@ in {
 
     git = {
       enable = true;
-      userName = gitconfig.user.name;
-      userEmail = gitconfig.user.email;
+      settings.user = {
+        name = gitconfig.user.name;
+        email = gitconfig.user.email;
+      };
     };
 
     gh = {
