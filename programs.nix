@@ -8,6 +8,7 @@ in {
     nerd-fonts.zed-mono
     nerd-fonts.geist-mono
     adwaita-fonts
+    ghostty
     neovim
     fzf
     gnumake
@@ -103,11 +104,6 @@ in {
           metrics = false;
         };
       };
-    };
-
-    ghostty = {
-      enable = true;
-      enableBashIntegration = true;
     };
 
     git = {

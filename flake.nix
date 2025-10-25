@@ -7,10 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # ghostty = {
+    #   url = "github:ghostty-org/ghostty";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs =
@@ -24,11 +24,11 @@
         inherit pkgs;
         modules = [ 
           ./home.nix
-          ({ pkgs, ... }: {
-            home.packages = [
-              ghostty.packages.${system}.default
-            ];
-          })
+          # ({ pkgs, ... }: {
+          #   home.packages = [
+          #     ghostty.packages.${system}.default
+          #   ];
+          # })
         ];
         extraSpecialArgs = { inherit self; };
       };
