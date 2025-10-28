@@ -86,41 +86,6 @@ in
       enableBashIntegration = true;
     };
 
-    zed-editor = {
-      enable = true;
-      extensions = [
-        "biome"
-        "php"
-        "mcp-server-context7"
-        "mcp-server-sequential-thinking"
-      ];
-      userKeymaps = [
-        {
-          context = "Editor && vim_mode == insert";
-          bindings = {
-            "j k" = "vim::NormalBefore";
-            ctrl-e = "vim::NormalBefore";
-          };
-        }
-        {
-          context = "Editor && vim_mode == normal";
-          bindings = {
-            "shift shift" = "file_finder::Toggle";
-          };
-        }
-      ];
-      userSettings = {
-        vim_mode = true;
-        features = {
-          copilot = true;
-          edit_prediction_provider = "copilot";
-        };
-        telemetry = {
-          metrics = false;
-        };
-      };
-    };
-
     git = {
       enable = true;
       settings.user = {
