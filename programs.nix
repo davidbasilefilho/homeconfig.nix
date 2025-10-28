@@ -52,6 +52,7 @@ in
       profileExtra = ''
         export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
         export PATH="$PATH:$HOME/.bun/bin"
+        export PATH=$HOME/.local/bin:$PATH
       '';
       initExtra = ''
         shopt -s autocd
